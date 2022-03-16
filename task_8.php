@@ -37,13 +37,16 @@
                             </h5>
                             <div class="frame-wrap">
                                 <table class="table m-0">
-  <?php
-  $connect=mysqli_connect("localhost","root","","people");
-
-  $boods=mysqli_query($connect,"SELECT * FROM `users`");
-  $arr=mysqli_fetch_assoc($boods);
-
-   ?>
+                             <?php
+                             /*$connect=mysqli_connect("localhost","root","","people");
+                             $boods=mysqli_query($connect,"SELECT * FROM `users`");
+                             $arr=mysqli_fetch_assoc($boods);*/
+                             $pdo = new PDO('mysql:host=localhost;dbname=people;','root','');
+                             $sql = 'SELECT * FROM `users`';
+                             $statment=$pdo->prepare($sql);
+                             $statment->execute();
+                             $task=$statment->fetchAll(PDO::FETCH_ASSOC);
+                                  ?>
                                   <thead>
                                         <tr>
                                             <th>#</th>
@@ -54,12 +57,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                  <?php while ($arr=mysqli_fetch_assoc($boods)) {?>
+                                  <?php foreach ($task as  $value) {?>
                                         <tr>
-                                            <th scope="row"><?php echo$arr['id'];?></th>
-                                            <td><?php echo $arr['First Name']; ?></td>
-                                            <td><?php echo $arr['Last Name']; ?></td>
-                                            <td><?php echo $arr['Username']; ?></td>
+                                            <th scope="row"><?php echo $value['id'];?></th>
+                                            <td><?php echo $value['First Name']; ?></td>
+                                            <td><?php echo $value['Last Name']; ?></td>
+                                            <td><?php echo $value['Username']; ?></td>
                                             <td>
                                                 <a href="show.php?id=<?php echo $arr['id'];?> " class="btn btn-info">Редактировать</a>
                                                 <a href="edit.php?id=<?php echo $arr['id'];?> " class="btn btn-warning">Изменить</a>

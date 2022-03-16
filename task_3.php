@@ -53,7 +53,7 @@
                             <?php if ($value['flag']):?>
                            <li class="breadcrumb-item"><a href="<?php echo $value['href'] ; ?>"><?php echo $value['title']; ?></a></li>
                          <?php else :?>
-                             <li class="breadcrumb-item active"><?php $value['title']; ?></li>
+                             <li class="breadcrumb-item active"><?php echo $value['title']; ?></li>
                         <?php endif; ?>
                       <?php  endforeach;?>
                             </ol>
