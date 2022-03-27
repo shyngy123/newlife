@@ -1,3 +1,23 @@
+<?php
+
+if (!empty($_FILES['image']))
+{
+  $pdo=new PDO('mysql:host=localhost;dbname=people','root','');
+  $uploadname=$_FILES['image']['tmp_name'];
+  $path='uploads/'.uniqid().'.jpeg';
+  move_uploaded_file($uploadname,$path);
+  $sql = "INSERT INTO `image` (`id`, `image`) VALUES (NULL, '$path')";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+$data = $pdo->query("SELECT * FROM `image`")->fetchall(PDO::FETCH_ASSOC);
+
+}
+
+
+//header("Location: task_16.php");
+//exit;
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +39,7 @@
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
-            <div class="row">
+            <div class="row"><a href="#"></a>
                 <div class="col-md-6">
                     <div id="panel-1" class="panel">
                         <div class="panel-hdr">
@@ -35,12 +55,12 @@
                             <div class="panel-content">
                                 <div class="panel-content">
                                     <div class="form-group">
-                                        <form action="">
+                                        <form action="task_16.php" method="post" enctype="multipart/form-data" >
                                             <div class="form-group">
                                                 <label class="form-label" for="simpleinput">Image</label>
-                                            <input type="file" id="simpleinput" class="form-control">
+                                            <input type="file" id="simpleinput" name="image" class="form-control">
                                             </div>
-                                            <button class="btn btn-success mt-3">Submit</button>
+                                            <button type="submit" name="button" class="btn btn-success mt-3">Submit</button>
                                         </form>
                                     </div>
                                 </div>
@@ -64,17 +84,11 @@
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
                                     <div class="row">
+                                      <?php foreach ($data as $val): ?>
                                         <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/1.jpg">
+                                            <img src="<?php echo $val['image'];?>">
                                         </div>
-
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/2.jpg">
-                                        </div>
-
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/3.jpg">
-                                        </div>
+                                      <?php endforeach;?>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +99,7 @@
 
 
         </main>
-        
+
 
         <script src="js/vendors.bundle.js"></script>
         <script src="js/app.bundle.js"></script>

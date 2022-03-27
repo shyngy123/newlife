@@ -64,9 +64,9 @@
                                             <td><?php echo $value['Last Name']; ?></td>
                                             <td><?php echo $value['Username']; ?></td>
                                             <td>
-                                                <a href="show.php?id=<?php echo $arr['id'];?> " class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=<?php echo $arr['id'];?> " class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=<?php echo $arr['id'];?> " class="btn btn-danger">Удалить</a>
+                                                <a href="show.php?id=<?php echo $value['id'];?> " class="btn btn-info">Редактировать</a>
+                                                <a href="edit.php?id=<?php echo $value['id'];?> " class="btn btn-warning">Изменить</a>
+                                                <a href="delete.php?id=<?php echo $value['id'];?> " class="btn btn-danger">Удалить</a>
                                             </td>
                                         </tr>
                                         <?php } ?>

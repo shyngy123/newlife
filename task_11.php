@@ -52,7 +52,7 @@
                                       </div>
                                   <?php endif;?>
 
-                                    <form action="php11.php" method="post">
+                                    <form action="task_11_handler.php.php" method="post">
                                         <div class="form-group">
                                         	<label class="form-label" for="simpleinput">Email</label>
                                         <input type="text" id="simpleinput" name="email" class="form-control">

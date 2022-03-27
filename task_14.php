@@ -40,7 +40,7 @@
                                     <?php if($_SESSION['status'] == 'Not authorized'):?>
                                         <div class="alert alert-danger fade show" role="alert">
                                             Неверный логин или пароль
-                                            <?php unset($_SESSION['status']);?>
+                                            <?php //unset($_SESSION['status']);?>
                                         </div>
                                     <?php endif;?>
 

@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,10 +35,18 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
+                            <
                                     <div class="alert alert-success fade show" role="alert">
-                                        Здравствуйте, ИМЯ_ПОЛЬЗОВАТЕЛЯ.
+                                        Здравствуйте,  ?>.
                                     </div>
-                                    <a href="#" class="btn btn-info">Выйти</a>
+                                      <?php
+                                       if(isset($_GET['exit']))
+{
+    session_destroy();
+    header('Location: task_14.php');
+    exit;
+} ?>
+                                    <a href="?exit" class="btn btn-info">Выйти</a>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +54,7 @@
                 </div>
             </div>
         </main>
-        
+
 
         <script src="js/vendors.bundle.js"></script>
         <script src="js/app.bundle.js"></script>
