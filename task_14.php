@@ -1,4 +1,5 @@
-<?php session_start() ?>
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,37 +35,30 @@
                     <div class="panel-container show">
                         <div class="panel-content">
                             <div class="panel-content">
-                              <?php if(isset($_SESSION['danger'])):?>
-                                      <div class="alert alert-danger fade show" role="alert">
-                                          <?php
-                                              echo $_SESSION['danger'];
-                                              unset($_SESSION['danger']);
-                                          ?>
-                                      </div>
-                                  <?php endif;?>
+                                <div class="form-group">
 
-                                  <?php if(isset($_SESSION['success'])):?>
-                                      <div class="alert alert-success fade show" role="alert">
-                                          <?php
-                                              echo $_SESSION['success'];
-                                              unset($_SESSION['success']);
-                                          ?>
-                                      </div>
-                                  <?php endif;?>
+                                    <?php if($_SESSION['status'] == 'Not authorized'):?>
+                                        <div class="alert alert-danger fade show" role="alert">
+                                            Неверный логин или пароль
+                                            <?php //unset($_SESSION['status']);?>
+                                        </div>
+                                    <?php endif;?>
 
-<<<<<<< HEAD
-                                    <form action="php11.php" method="post">
-=======
-                                    <form action="task_11_handler.php.php" method="post">
->>>>>>> temp-branch
+                                    <?php if($_SESSION['status'] == 'Authorized'):?>
+                                        <div class="alert alert-success fade show" role="alert">
+                                            Вы успешно авторизовались!
+                                        </div>
+                                    <?php endif;?>
+
+                                    <form action="task_14_handler.php" method="post">
                                         <div class="form-group">
                                         	<label class="form-label" for="simpleinput">Email</label>
-                                        <input type="text" id="simpleinput" name="email" class="form-control">
+                                        <input type="text" name="email" id="simpleinput" class="form-control">
                                         </div>
 
                                         <label class="form-label" for="simpleinput">Password</label>
-                                        <input type="password" id="simpleinput" name="password" class="form-control">
-                                        <button class="btn btn-success mt-3">Submit</button>
+                                        <input type="password" name="password" id="simpleinput" class="form-control">
+                                        <button class="btn btn-success mt-3" type="submit">Submit</button>
                                     </form>
                                 </div>
                             </div>

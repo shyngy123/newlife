@@ -34,38 +34,19 @@
                     <div class="panel-container show">
                         <div class="panel-content">
                             <div class="panel-content">
-                              <?php if(isset($_SESSION['danger'])):?>
-                                      <div class="alert alert-danger fade show" role="alert">
-                                          <?php
-                                              echo $_SESSION['danger'];
-                                              unset($_SESSION['danger']);
-                                          ?>
-                                      </div>
-                                  <?php endif;?>
-
-                                  <?php if(isset($_SESSION['success'])):?>
-                                      <div class="alert alert-success fade show" role="alert">
-                                          <?php
-                                              echo $_SESSION['success'];
-                                              unset($_SESSION['success']);
-                                          ?>
-                                      </div>
-                                  <?php endif;?>
-
-<<<<<<< HEAD
-                                    <form action="php11.php" method="post">
-=======
-                                    <form action="task_11_handler.php.php" method="post">
->>>>>>> temp-branch
-                                        <div class="form-group">
-                                        	<label class="form-label" for="simpleinput">Email</label>
-                                        <input type="text" id="simpleinput" name="email" class="form-control">
-                                        </div>
-
-                                        <label class="form-label" for="simpleinput">Password</label>
-                                        <input type="password" id="simpleinput" name="password" class="form-control">
-                                        <button class="btn btn-success mt-3">Submit</button>
-                                    </form>
+                                <div class="form-group">
+                            <
+                                    <div class="alert alert-success fade show" role="alert">
+                                        Здравствуйте,  ?>.
+                                    </div>
+                                      <?php
+                                       if(isset($_GET['exit']))
+{
+    session_destroy();
+    header('Location: task_14.php');
+    exit;
+} ?>
+                                    <a href="?exit" class="btn btn-info">Выйти</a>
                                 </div>
                             </div>
                         </div>
