@@ -1,23 +1,8 @@
 <?php
-
-if (!empty($_FILES['image']))
-{
-  $pdo=new PDO('mysql:host=localhost;dbname=people','root','');
-  $uploadname=$_FILES['image']['tmp_name'];
-  $path='uploads/'.uniqid().'.jpeg';
-  move_uploaded_file($uploadname,$path);
-  $sql = "INSERT INTO `image` (`id`, `image`) VALUES (NULL, '$path')";
-  $query = $pdo->prepare($sql);
-  $query->execute();
+include_once "task_16_handler.php";
 $data = $pdo->query("SELECT * FROM `image`")->fetchall(PDO::FETCH_ASSOC);
 
-}
-
-
-//header("Location: task_16.php");
-//exit;
  ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +40,7 @@ $data = $pdo->query("SELECT * FROM `image`")->fetchall(PDO::FETCH_ASSOC);
                             <div class="panel-content">
                                 <div class="panel-content">
                                     <div class="form-group">
-                                        <form action="task_16.php" method="post" enctype="multipart/form-data" >
+                                        <form action="task_16_handler.php" method="post" enctype="multipart/form-data" >
                                             <div class="form-group">
                                                 <label class="form-label" for="simpleinput">Image</label>
                                             <input type="file" id="simpleinput" name="image" class="form-control">
@@ -84,11 +69,16 @@ $data = $pdo->query("SELECT * FROM `image`")->fetchall(PDO::FETCH_ASSOC);
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
                                     <div class="row">
+
+                                      <?php if (!empty($_FILES['image'])): ?>
                                       <?php foreach ($data as $val): ?>
                                         <div class="col-md-3 image">
                                             <img src="<?php echo $val['image'];?>">
                                         </div>
                                       <?php endforeach;?>
+                                         <?php endif; ?>
+
+
                                     </div>
                                 </div>
                             </div>

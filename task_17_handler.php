@@ -18,14 +18,12 @@ function upload_file($file,$tmp){
 
 
 
-
 //die;
 }
-if (!empty($_FILES['image'])){
 
 //header("Location: task_17.php");
 
-}
+
 //header("Location: task_17.php");
 //exit;
 

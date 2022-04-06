@@ -1,5 +1,3 @@
-<?php include_once 'task_17_handler.php';
-exit;?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +65,7 @@ exit;?>
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
                                     <div class="row">
+                                      <?php require_once 'task_17_handler.php';?>
                                     <?php if (!empty($_FILES['image'])): ?>
                                       <?php foreach ($data as $val): ?>
                                         <div class="col-md-3 image">

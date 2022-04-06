@@ -1,20 +1,7 @@
 <?php
-
-if (!empty($_FILES['image']))
-{
+include_once "task_16_1_handler.php";
   $pdo=new PDO('mysql:host=localhost;dbname=people','root','');
-  $uploadname=$_FILES['image']['tmp_name'];
-  $path='uploads/'.uniqid().'.jpeg';
-  move_uploaded_file($uploadname,$path);
-  $sql = "INSERT INTO `image` (`id`, `image`) VALUES (NULL, '$path')";
-  $query = $pdo->prepare($sql);
-  $query->execute();
  $data = $pdo->query("SELECT * FROM `image`")->fetchall(PDO::FETCH_ASSOC);
-}
-
-
-
-
  ?>
 
 <!DOCTYPE html>
@@ -83,12 +70,15 @@ if (!empty($_FILES['image']))
                             <div class="panel-content">
                                 <div class="panel-content image-gallery">
                                     <div class="row">
+
+<?php if (!empty($_FILES['image'])): ?>
                                       <?php foreach ($data as $val): ?>
                                         <div class="col-md-3 image">
                                             <img src="<?php echo $val['image'];?>">
                                             <a class="btn btn-danger"   href="task_16_delete.php?name=<?=$val['image']?>" onclick="confirm('Вы уверены?');">Удалить</a>
                                         </div>
-                                        <?php endforeach;?>
+                                    <?php endforeach;?>
+                                      <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
